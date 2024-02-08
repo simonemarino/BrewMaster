@@ -1,0 +1,79 @@
+version: '3.9'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+        #healthcheck:
+        #  test: ["CMD", "curl", "http://localhost:9000"]
+        #  timeout: 20s
+        #  retries: 10
+        #depends_on:
+        #  db:
+        #    condition: service_healthy
+    image: app-beers_img
+    #command: php artisan system:start
+    container_name: app-beers
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./.env:/var/www/.env
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver-beers
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8087:80"
+      - "4477:443"
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./docker-compose/nginx/logs/:/var/log/nginx/
+        #depends_on:
+        #  app:
+        #    condition: service_healthy
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:8.3
+    container_name: db-beers
+    restart: unless-stopped
+    tty: true
+      #healthcheck:
+      #  test: ["CMD", "mysqladmin", "-ubeers_user", "-p'!ed23zA24d'", "ping", "-h", "localhost"]
+      #  timeout: 20s
+      #  retries: 10
+    ports:
+      - "3318:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=!A32hkl2B032hz8
+    volumes:
+      - ./docker-compose/mysql/init/:/docker-entrypoint-initdb.d/:ro
+      - dbdata:/var/lib/mysql/
+      - ./docker-compose/mysql/conf.d/:/etc/mysql/conf.d/
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
