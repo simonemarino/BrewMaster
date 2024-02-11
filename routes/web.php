@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () { return view('welcome');})->name('welcome');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware(['web','auth'])->group(function () {
+    Route::get('/beers', [BeerController::class, 'index'])->name('beers.index');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+

@@ -7,9 +7,9 @@ COPY composer.json /var/www/
 WORKDIR /var/www
 
 
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+#RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 
-RUN apt-get install -y nodejs
+#RUN apt-get install -y nodejs
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -61,4 +61,5 @@ USER www-user
 #RUN php artisan system:start # Non funziona durante la fase di build, ha bisogno del db
 
 COPY --chmod=755 start.sh /start.sh
-ENTRYPOINT ["/start.sh"]
+#ENTRYPOINT ["/start.sh"]
+RUN "/start.sh"
