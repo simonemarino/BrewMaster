@@ -18,7 +18,6 @@ class BeerController extends Controller
     public function index(Request $request)
     {
         $token = auth()->user()->access_token;
-        //dd($token);
         return view('beers', compact('token'));
     }
 

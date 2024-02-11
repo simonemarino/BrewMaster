@@ -11,7 +11,7 @@ This is a Laravel project configured to run within Docker.
 
 1. Clone the repository or unzip
     ```
-    git clone <REPO_URL>
+    git clone git@github.com:simonemarino/BrewMaster.git
     ``` 
 
 2. Navigate into the project directory:
@@ -41,27 +41,46 @@ This is a Laravel project configured to run within Docker.
     ```
     docker-compose up -d --build
     ```
-6. Access the Docker container shell:
-    ```
-    docker exec -it app-beers bash
-    ```
-7. Install PHP dependencies using Composer:
+    The `start.sh` is an script automates inside docker up
 
-    ```
-    composer install
-    ```
-8. Generate the Laravel application key:
+    If the start script fails to execute successfully, you can manually run the following commands:
 
-    ```
-    php artisan key:generate
-    ```
-9. Run the database migrations:
+    
+    1. Access the Docker container shell:
+        ```
+        docker exec -it app-beers bash
+        ```
+    2. Install PHP dependencies using Composer:
 
-    ```
-    php artisan migrate
-    ```
-10. Seed the database (for create User):
+        ```
+        composer install
+        ```
+    3. Generate the Laravel application key:
 
-    ```
-    php artisan db:seed
-    ```
+        ```
+        php artisan key:generate
+        ```
+    4. Creating Symbolic Link for Storage Directory:
+        ```
+        php artisan storage:link
+        ```
+    5. Run the database migrations:
+
+        ```
+        php artisan migrate
+        ```
+    6. Seed the database (for create User):
+
+        ```
+        php artisan db:seed
+        ```
+
+Run the test inside  Docker container :
+
+```
+docker exec -it app-beers bas
+php artisan test
+```
+Finally, you can access the application by visiting `http://localhost` in your browser.
+
+Your Laravel project is now set up and ready to use.
