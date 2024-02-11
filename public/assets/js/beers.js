@@ -1,10 +1,15 @@
 
     const URL_API = $('#container').data('url');
     const URL_API_TOTAL = $('#container').data('totalUrl');
+    const TOKEN = $('#tk').val();
+    console.log(TOKEN);
     const getTotalItems = () => {
         $.ajax({
                     type: 'GET',
                     url: URL_API_TOTAL,
+                    headers: {
+                        'Authorization': 'Bearer ' + TOKEN
+                    },
                     success: function(response) {
                         $('#totalItems').val(response.total_items);
                     },
@@ -22,6 +27,9 @@
                     data: {
                         page: page,
                         per_page: per_page
+                    },
+                    headers: {
+                        'Authorization': 'Bearer ' + TOKEN
                     },
                     success: function(response) {
                         response = response.data

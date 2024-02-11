@@ -25,6 +25,7 @@
 <div id="totitems"> Total items : <span id="total-items">0</span></div>
 <input type="hidden" id="page" value="">
 <input type="hidden" id="totalItems" value="">
+<input type="hidden" id="tk" value="{{$token}}">
 </div>
 
 

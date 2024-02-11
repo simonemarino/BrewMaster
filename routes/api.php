@@ -16,8 +16,10 @@ use App\Http\Controllers\BeerController;
 */
 Route::prefix('v1')->group(function () {
     Route::prefix('beers')->group(function () {
-        Route::get('/data', [BeerController::class, 'getData'])->name('beers.data');
-        Route::get('/total', [BeerController::class, 'getDataTotal'])->name('beers.total');
+        Route::middleware('authtoken')->group(function () {
+            Route::get('/data', [BeerController::class, 'getData'])->name('beers.data');
+            Route::get('/total', [BeerController::class, 'getDataTotal'])->name('beers.total');
+        });
     });
 
 });
