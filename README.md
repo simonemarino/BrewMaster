@@ -1,6 +1,22 @@
-# Laravel Project with Docker
+# BrewMaster 
+[![Author](https://img.shields.io/badge/Author-Simone%20Marino-blue)](https://link-al-profilo-autore)
+
+Web application designed to simplify the management and organization of your beers. 
 
 This is a Laravel project configured to run within Docker.
+
+
+## Version
+
+[![Version](https://img.shields.io/badge/DockerCompose-3.9-blue)](https://link-alla-versione)
+ [![Version](https://img.shields.io/badge/Composer-2.7.0-yellow)](https://link-alla-versione)
+[![Version](https://img.shields.io/badge/Laravel-10.43.0-red)](https://link-alla-versione)
+[![Version](https://img.shields.io/badge/Mysql-8.3-blue)](https://link-alla-versione)
+[![Version](https://img.shields.io/badge/PHP-8.3.2-blue)](https://link-alla-versione)
+
+
+
+
 
 ## Prerequisites
 
@@ -69,18 +85,25 @@ This is a Laravel project configured to run within Docker.
         ```
         php artisan migrate
         ```
-    6. Seed the database (for create User):
 
-        ```
-        php artisan db:seed
-        ```
 
-Run the test inside  Docker container :
+Populate the database with Seed (create User):
 
 ```
-docker exec -it app-beers bas
+php artisan db:seed
+```
+
+If you want run the test, go to Docker container :
+
+```
+docker exec -it app-beers bash
 php artisan test
 ```
 Finally, you can access the application by visiting `http://localhost` in your browser.
 
 Your Laravel project is now set up and ready to use.
+
+## License
+This project is licensed under the terms of the Apache License, Version 2.0. Please see the LICENSE file for full details.
+
+[![License](https://img.shields.io/badge/Apache-2.0-yellow)](https://link-alla-licenza)

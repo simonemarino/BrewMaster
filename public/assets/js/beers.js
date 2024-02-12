@@ -2,7 +2,6 @@
     const URL_API = $('#container').data('url');
     const URL_API_TOTAL = $('#container').data('totalUrl');
     const TOKEN = $('#tk').val();
-    console.log(TOKEN);
     const getTotalItems = () => {
         $.ajax({
                     type: 'GET',

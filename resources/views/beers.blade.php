@@ -1,13 +1,9 @@
 
 @extends('app')
+@section('title', 'List Beers')
 @push('styles')
-
 <link href="{{ asset('assets/css/beers.css') }}" rel="stylesheet">
 @endpush
-
-@section('title', 'Page Title')
-
-
 
 @section('content')
 <div class="loading-bar-container">
@@ -28,17 +24,13 @@
 <input type="hidden" id="tk" value="{{$token}}">
 </div>
 
-
-
-
 <div class="container d-flex flex-wrap align-items-center" id="container" data-total-url="{{ route('beers.total') }}" data-url="{{ route('beers.data') }}">
 </div>
 <div class="fixed-bottom">
     <div class="pagination">
-        <ul> <!--pages or li are comes from javascript --> </ul>
+        <ul></ul>
     </div>
 </div>
-
 
 
 @endsection

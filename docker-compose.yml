@@ -6,15 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-        #healthcheck:
-        #  test: ["CMD", "curl", "http://localhost:9000"]
-        #  timeout: 20s
-        #  retries: 10
-        #depends_on:
-        #  db:
-        #    condition: service_healthy
     image: app-beers_img
-    #command: php artisan system:start
     container_name: app-beers
     restart: unless-stopped
     tty: true
@@ -42,9 +34,6 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx/conf.d/:/etc/nginx/conf.d/
       - ./docker-compose/nginx/logs/:/var/log/nginx/
-        #depends_on:
-        #  app:
-        #    condition: service_healthy
     networks:
       - app-network
 
@@ -54,10 +43,6 @@ services:
     container_name: db-beers
     restart: unless-stopped
     tty: true
-      #healthcheck:
-      #  test: ["CMD", "mysqladmin", "-ubeers_user", "-p'!ed23zA24d'", "ping", "-h", "localhost"]
-      #  timeout: 20s
-      #  retries: 10
     ports:
       - "3318:3306"
     environment:

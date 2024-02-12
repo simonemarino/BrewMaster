@@ -3,55 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>App Name - @yield('title')</title>
+<title>@yield('title')</title>
 <link href="https://fonts.googleapis.com/css2?family=Kalam" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 @stack('styles')
-<style>
 
-    .sidebar{
-        font-family: 'Kalam';
-           font-size: 22px;
-           color: #c88547;
-    }
-    .bg-dark{
-        background-color: #ac723c !important;
-    }
-    a.nav-link.px-0.align-middle {
-        color: white;
-    }
-    a.nav-link.px-0.align-middle:hover {
-        color: #dfc5ac;
-    }
-    span.fs-5.d-none.d-sm-inline {
-        color: #ac723c;
-    }
-
-    a.d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none {
-        background-color: #f6f3f3;
-        width: 100%;
-        justify-content: flex-start;
-        border-radius: 10px;
-        line-height: 20px;
-        height: 40px;
-        justify-content: center;
-        padding: 0;
-        padding-top: 18px;
-    }
-    .footer-sidebar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50px;
-        text-align: center;
-        margin: auto;
-        position: fixed;
-        bottom: 0;
-    }
-    .dropdown-menu-dark {
-        background-color: #ac723c !important;
-    }
-</style>
 
 </head>
     <body>
